@@ -15,6 +15,7 @@ jobs:
       uses: actions/setup-java@v3
       with:
         java-version: '20'
+        distribution: 'temurin'
         cache: maven
     - name: Build Java with Maven No Tests
       run: mvn -B package -DskipTests --file pom.xml
