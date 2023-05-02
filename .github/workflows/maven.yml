@@ -2,7 +2,8 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main" ]
+    tags:
+      - '*'
   pull_request:
     branches: [ "main" ]
   release:
@@ -26,5 +27,13 @@ jobs:
       with:
         name: artifact
         path: /home/runner/work/NewRepo/NewRepo/target/demo-0.0.1-SNAPSHOT.jar
-
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "demo-0.0.1-SNAPSHOT.jar"
 
