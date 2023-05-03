@@ -32,9 +32,7 @@ jobs:
 
       - name: dsa
         run: |
-          ls -la
-          ls /home/runner/work/NewRepo/NewRepo/target/
-
+          cp /home/runner/work/NewRepo/NewRepo/target/demo-0.0.1-SNAPSHOT.jar demo-0.0.1-SNAPSHOT.jar
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
