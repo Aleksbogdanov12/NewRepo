@@ -29,10 +29,12 @@ jobs:
       - name: Build Java with Maven No Tests
         run: mvn -B package -DskipTests --file pom.xml
 
-
-      - name: dsa
+      - name: Publish Package
         run: |
-          cp /home/runner/work/NewRepo/NewRepo/target/demo-0.0.1-SNAPSHOT.jar demo-0.0.1-SNAPSHOT.jar
+          docker build -t MyCon .
+          docker push MyCon
+        env:
+          GITHUB_TOKEN: ${{ secrets.NEW_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
