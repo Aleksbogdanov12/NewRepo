@@ -46,11 +46,11 @@ jobs:
         run: |
           mvn -B package -DskipTests --file pom.xml
           cp /home/runner/work/NewRepo/NewRepo/target/demo-0.0.1-SNAPSHOT.jar .
-          ls -la
+
       - name: Build and push Docker images
-        uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
+        uses: docker/build-push-action@v4
         with:
           context: .
+          file: ./Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/clockbox:latest
