@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  publishdocker:
+  docker_publish:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
