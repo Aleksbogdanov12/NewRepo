@@ -2,7 +2,8 @@ name: Publish
 
 on:
   release:
-    ['create']
+    types: [created]
+
 
 jobs:
   build:
@@ -21,4 +22,4 @@ jobs:
       - name: Publish artifact on GitHub Packages
         run: mvn -B -e -X clean deploy -DskipTests
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.NEW_TOKEN }}
