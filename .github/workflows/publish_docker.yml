@@ -45,6 +45,7 @@ jobs:
       - name: Build Java with Maven No Tests
         run: |
           mvn -B package -DskipTests --file pom.xml
+          cp /home/runner/work/NewRepo/NewRepo/target/demo-0.0.1-SNAPSHOT.jar .
           ls -la
       - name: Build and push Docker images
         uses: docker/build-push-action@f2a1d5e99d037542a71f64918e516c093c6f3fc4
